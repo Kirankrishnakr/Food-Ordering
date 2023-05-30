@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Products</title>
+</head>
+<body>
+
+
+<div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">ADD PRODUCTS</h4>
+
+                  <form class="forms-sample" method="post" action="{% url 'saveproduct'  %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label>Select Category</label>
+                        <select class="form-control" name="select">
+                        <option>Select</option>
+                         {% for d in data %}
+                        <option>{{d.Name}}</option>
+                         {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputName1">Product Name</label>
+                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Product Name" name="pname">
+                    </div>
+                    <div>
+                    <label for="exampleInputq1">Product Quantity</label>
+                      <input type="number" class="form-control" id="exampleInputq1" placeholder="Product Quantity" name="pquan" min="1" max="5">
+                    </div>
+                     <div>
+                    <label for="exampleInputp">Product Price</label>
+                      <input type="text" class="form-control" id="exampleInputp" placeholder="Product Price" name="price">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputdes">Description</label>
+                      <textarea class="form-control" id="exampleInputdes" placeholder="Description" name="description"></textarea>
+                    </div>
+
+                      <div>
+                           <label>File Upload</label><br>
+                          <input type="file" name="image">
+
+                      </div><br>
+                      <div>
+                    <button type="submit" class="btn btn-dark btn-rounded btn-fw">Register</button>
+                      </div>
+
+
+</body>
+</html>
+{% endblock %}
